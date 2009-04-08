@@ -1,0 +1,41 @@
+# IRIX64 (loni) .cshrc
+
+set path=(/usr/bsd /usr/freeware/bin /usr/freeware/sbin /bin /sbin /usr/bin /usr/sbin ~/bin/irix_64/bin ~/bin/irix_64/sbin /usr/bin/X11 /usr/etc)
+
+setenv PAGER less
+
+set nobeep
+set color
+set colorcat
+
+set welcome_color=""
+set normal_color=""
+set white_color=""
+set bold_color=""
+set xterm_title=""
+
+set prompt='[%n@%m]% ';
+set promptchars="%#";
+
+#alias ls ls --color
+alias ls dmls -F 
+alias ll dmls -lhFD
+alias vim vim -u ~/.vimrc.vim5
+alias vi vim
+alias df /usr/bin/df -Ph -w 40
+alias du dmdu
+alias sudo /usr/local/bin/sudo
+
+# Wierd alias on inire, etc
+unalias cd
+
+if ($?loginsh) then
+	stty intr '^C' echo
+  set term=xterm
+endif
+ 
+
+set num_cpus=`top | grep CPU | grep idle | sed 's/CPU.*$//'`
+set cpu_name=`hinv -c processor | head -n 1 | sed -e 's/^[0-9]* //'`
+set memory_info=`top | grep Memory | sed -e 's/Memory: //' -e 's/ max.*$//' -e 's/G/ Gb/' -e 's/M/ Mb/'`
+
