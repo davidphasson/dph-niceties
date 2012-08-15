@@ -25,3 +25,10 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	\			exe "normal $" |
 	\		endif |
 	\ 	endif
+
+au BufNewFile,BufRead *.rb,*.erb call RubySettings()
+ 
+function RubySettings()
+  set tabstop=2
+  set shiftwidth=2
+endfunction
